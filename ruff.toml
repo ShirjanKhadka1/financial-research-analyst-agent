@@ -1,0 +1,7 @@
+# Ruff configuration for the analyst-agent (Phase 7).
+# Deliberate ignore, with a reason — not a blanket waiver:
+# - BLE001: server.py maps ANY bad payload to HTTP 422 by design
+#   (tested: unknown route 404, bad payload 422); narrowing the
+#   except would change the tested API contract.
+[lint]
+ignore = ["BLE001"]

@@ -104,7 +104,7 @@ def test_research_rejects_missing_prices_with_422():
 def test_research_unknown_route_is_404():
     server, port = _start_server()
     try:
-        status, _, body = _request(port, "POST", "/other",
+        status, _headers, _body = _request(port, "POST", "/other",
                                    body=json.dumps(DEMO))
         assert status == 404
     finally:

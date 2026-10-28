@@ -39,7 +39,7 @@ Markdown report + audit log.
 
 ## Tests
 ```
-python -m pytest tests/ -q   # 4 passed (demo pipeline, bank weights, audit tamper, risk veto)
+python -m pytest tests/ -q   # 46 passed (demo pipeline, bank weights, audit tamper, risk veto, sentiment, server, isolated technicals, bad inputs; flat-series RSI bug fixed: neutral 50, not 100)
 ```
 
 ## As-of / point-in-time discipline

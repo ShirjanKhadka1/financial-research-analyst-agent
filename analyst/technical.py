@@ -15,7 +15,7 @@ def rsi(prices, n=14):
     for i in range(n+1, len(prices)):
         ag = (ag*(n-1)+max(prices[i]-prices[i-1],0))/n
         al = (al*(n-1)+max(prices[i-1]-prices[i],0))/n
-    if al == 0: return 100.0
+    if al == 0: return 100.0 if ag > 0 else 50.0
     return 100 - 100/(1+ag/al)
 def macd(prices, fast=12, slow=26, signal=9):
     if len(prices) < slow: raise ValueError("not enough prices for MACD")

@@ -1,12 +1,15 @@
 """Risk: historical VaR/CVaR, drawdown, beta, Monte Carlo VaR. Seeded, reproducible."""
-import math, random
+import math
+import random
+
+
 def returns_from_prices(prices):
     if len(prices)<2: raise ValueError("need at least 2 prices")
     return [prices[i]/prices[i-1]-1 for i in range(1,len(prices)) if prices[i-1]!=0]
 def historical_var(returns, alpha=0.05):
-    s=sorted(returns); k=max(0,int(math.floor(alpha*len(s)))); return -s[k]
+    s=sorted(returns); k=max(0,math.floor(alpha*len(s))); return -s[k]
 def historical_cvar(returns, alpha=0.05):
-    s=sorted(returns); k=max(1,int(math.floor(alpha*len(s)))); return -sum(s[:k])/k
+    s=sorted(returns); k=max(1,math.floor(alpha*len(s))); return -sum(s[:k])/k
 def max_drawdown(prices):
     peak=prices[0]; worst=0.0
     for p in prices:

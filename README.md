@@ -55,3 +55,18 @@ snapshot.
 
 ## Disclaimer
 Research only. Not investment advice. No trade is made by this system.
+
+## Limitations
+
+- This system computes from data it is given (CSV files or user-supplied
+  inputs). It has no live market feed, and it makes no trades.
+- Monte Carlo VaR is a simulation under stated assumptions, not a
+  prediction of future loss: change the assumptions and the number changes.
+- A report is only valid as of its stated `as_of` date (see As-of /
+  point-in-time discipline above).
+
+> Research only, not investment advice; never a buy/sell recommendation
+
+See `CONTRIBUTING.md` for how to contribute and `SECURITY.md` for how to
+report a security issue privately.
+

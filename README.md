@@ -42,5 +42,16 @@ Markdown report + audit log.
 python -m pytest tests/ -q   # 4 passed (demo pipeline, bank weights, audit tamper, risk veto)
 ```
 
+## As-of / point-in-time discipline
+Every input in this system is stamped `as_of`, and every report must be
+read as of that date — not as of today. A figure restated from a
+historical date reads as first reported for that date: it is not silently
+updated, revised, or re-based to a later figure. Where a historical
+figure is not available on a first-reported basis, it is withheld and
+labelled TO VERIFY rather than filled in with a later restatement or a
+plausible substitute. A report whose inputs span different dates must say
+so, so that no reader mistakes a mixed-date report for a single-date
+snapshot.
+
 ## Disclaimer
 Research only. Not investment advice. No trade is made by this system.

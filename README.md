@@ -29,6 +29,8 @@ fakher's CrewAI assistant, and both GitHub topic lists. Full teardown:
 ```
 python -m analyst.cli demo
 python examples/demo_run.py        # saves examples/demo_report.md
+python -m analyst.cli demo2        # second worked example (see below)
+python examples/second_run.py      # saves examples/second_report.md
 python -m analyst.server           # API on http://127.0.0.1:8000
 ```
 
@@ -37,9 +39,24 @@ Data (CSV/Yahoo/World Bank, user-supplied) → Technical → Fundamental (Piotro
 Risk → Valuation by type → Sentiment (lexicon, word counts shown) → Debate → Risk Veto →
 Markdown report + audit log.
 
+## Second worked example
+The first demo (`demo`, company type `stable`) runs the pipeline on a smooth
+rising series and ends **Bull case stronger**, no veto (5% VaR ~3.2%,
+Piotroski 9/9). The second demo (`demo2`, `DEMO_CYCLICAL` in `analyst/cli.py`,
+report in `examples/second_report.md`) reuses the **same** pipeline, audit
+log and Risk Veto — no second pipeline implementation. It is demo data
+only, not a real company and not real financials: company type `cyclical`
+(EV/EBITDA-led weights), weak demo fundamentals (Piotroski 1/9), blended
+value 73.0 vs price 100 (gap −27%), and a price series that repeatedly
+drops 12% (100 → 88 → 100 …), so 5% VaR is 12% and the Risk Manager vetoes
+(**RISK VETO — no position**). Its max drawdown is only −12%, so the veto
+is VaR-driven, not drawdown-driven; swapping in the first demo's smooth
+price series clears the veto, proving the outcome follows the inputs.
+No buy/sell recommendation is made in either example.
+
 ## Tests
 ```
-python -m pytest tests/ -q   # 46/46 tests passing (demo pipeline, bank weights, audit tamper, risk veto, sentiment, server, isolated technicals, bad inputs; flat-series RSI bug fixed: neutral 50, not 100)
+python -m pytest tests/ -q   # 49/49 tests passing (demo pipeline, bank weights, audit tamper, risk veto, sentiment, server, isolated technicals, bad inputs, second-example end-to-end/audit/veto; flat-series RSI bug fixed: neutral 50, not 100)
 ```
 
 ## As-of / point-in-time discipline

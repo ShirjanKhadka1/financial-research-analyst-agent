@@ -1,7 +1,10 @@
 """Immutable audit log — hash-chained, like ai-hedge-fund's paper ledger.
 Each entry hashes the previous entry, so a later edit breaks the chain.
 $0 spend by construction: the core runs no paid API."""
-import hashlib, json
+import hashlib
+import json
+
+
 def entry_hash(prev_hash, entry):
     payload=json.dumps({"prev": prev_hash, "entry": entry}, sort_keys=True)
     return hashlib.sha256(payload.encode()).hexdigest()

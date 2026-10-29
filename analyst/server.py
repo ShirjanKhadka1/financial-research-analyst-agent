@@ -3,9 +3,11 @@ GET /health, POST /research (JSON = pipeline input contract), GET /demo.
 Run: python -m analyst.server  (port 8000)"""
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
+
 from .cli import DEMO
 from .pipeline import run
-from .report import render
+
+
 class H(BaseHTTPRequestHandler):
     def _send(self, obj, code=200):
         body = json.dumps(obj).encode(); self.send_response(code)

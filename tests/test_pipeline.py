@@ -1,6 +1,8 @@
-from analyst.pipeline import run
+from analyst import audit, valuation
 from analyst.cli import DEMO
-from analyst import valuation, audit
+from analyst.pipeline import run
+
+
 def test_demo_pipeline_runs_and_audits():
     r = run(DEMO)
     assert r["audit_valid"] and r["audit_entries"] >= 6

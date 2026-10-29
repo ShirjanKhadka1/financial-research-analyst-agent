@@ -1,8 +1,11 @@
 """CLI: python -m analyst.cli demo  -> runs the full pipeline on demo data, prints the report.
 No network, no key, no install beyond Python 3.10+."""
-import argparse, sys
+import argparse
+import sys
+
 from .pipeline import run
 from .report import render
+
 DEMO = {"as_of": "2026-10-28", "company_type": "stable", "price": 100.0,
         "prices": [100 + i*0.5 + (i % 5) for i in range(60)],
         "market_prices": [(100 + i*0.5 + (i % 5))*10 + (i % 3) for i in range(60)],

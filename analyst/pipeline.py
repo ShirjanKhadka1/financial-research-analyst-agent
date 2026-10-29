@@ -10,6 +10,7 @@ the falsifier — what would change the verdict. No buy/sell recommendation.
 """
 from . import audit, debate, fundamental, risk, sentiment, technical, valuation
 
+
 def run(inp):
     log = audit.AuditLog()
     log.add("input_received", {"as_of": inp.get("as_of"), "company_type": inp.get("company_type"), "n_prices": len(inp.get("prices", []))})

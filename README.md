@@ -59,6 +59,9 @@ No buy/sell recommendation is made in either example.
 python -m pytest tests/ -q   # 49/49 tests passing (demo pipeline, bank weights, audit tamper, risk veto, sentiment, server, isolated technicals, bad inputs, second-example end-to-end/audit/veto; flat-series RSI bug fixed: neutral 50, not 100)
 ```
 
+Generated counts: see `status.json` (produced by `scripts/generate_status.py`, checked by `scripts/check_numbers.py`).
+```
+
 ## As-of / point-in-time discipline
 Every input in this system is stamped `as_of`, and every report must be
 read as of that date — not as of today. A figure restated from a

@@ -60,7 +60,21 @@ python -m pytest tests/ -q   # 49/49 tests passing (demo pipeline, bank weights,
 ```
 
 Generated counts: see `status.json` (produced by `scripts/generate_status.py`, checked by `scripts/check_numbers.py`).
+
+### Quality gates (Phase 4)
+
+```bash
+pip install -r requirements-dev.txt   # pinned dev tools, identical to CI
+python scripts/qa.py                  # every gate in order; stops at the first failure
 ```
+
+`scripts/qa.py` runs the test suite, lint (`ruff check`), typecheck
+(`mypy`), the counts check, the licence check, the secret scan (tree +
+git history), the link check (internal links must resolve; external
+links best-effort), and the fresh-clone demo run. The same gates run
+in CI via the quality job in `.github/workflows/test.yml`; the Phase 4
+update to that workflow is staged for deployment via the browser route
+and is not live until its first run is observed.
 
 ## As-of / point-in-time discipline
 Every input in this system is stamped `as_of`, and every report must be

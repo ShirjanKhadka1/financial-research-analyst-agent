@@ -8,7 +8,10 @@ Thank you for contributing. Keep changes small, sourced, and checkable.
 python -m pytest tests/ -q
 ```
 
-All tests must pass before submitting.
+All tests must pass before submitting. Also run the Phase 4 quality
+gates (`pip install -r requirements-dev.txt`, then
+`python scripts/qa.py`) — they add lint, typecheck, counts, licence,
+secret, link and fresh-clone checks, and stop at the first failure.
 
 ## Proposing a Markdown change
 

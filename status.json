@@ -1,7 +1,7 @@
 {
   "repo": "financial-research-analyst-agent",
   "generated_by": "scripts/generate_status.py (Round 3: pytest run + file reads)",
-  "generated_at": "2026-10-29",
+  "generated_at": "2026-11-07",
   "method": "tests counted from a live pytest run in this checkout; version read from pyproject.toml when present",
   "version": null,
   "version_note": "TO VERIFY: this repo carries no version file",
